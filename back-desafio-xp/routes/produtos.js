@@ -4,5 +4,6 @@ const produtoController = require("../controllers/produtoController");
 
 /* GET users listing. */
 router.get("/", produtoController.listarProdutos);
+router.post("/novo", produtoController.cadastrarProduto);
 
 module.exports = router;
