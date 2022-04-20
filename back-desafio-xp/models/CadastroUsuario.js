@@ -14,22 +14,17 @@ const CadastroUsuario = db.define(
     cidade: {
       type: DataTypes.STRING(45),
     },
-    usuario_id: {
+    Usuarios_idUsuarios: {
       type: DataTypes.INTEGER,
       references: {
         model: Usuarios,
         key: "id",
       },
     },
-    createdAt: {
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-    },
   },
   {
     tableName: "cadastrousuario",
+    timestamps: false,
   }
 );
 

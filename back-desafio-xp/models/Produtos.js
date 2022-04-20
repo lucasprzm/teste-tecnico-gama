@@ -4,7 +4,7 @@ const { DataTypes } = require("sequelize");
 const Produtos = db.define(
   "Produtos",
   {
-    id: {
+    idProdutos: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -18,15 +18,10 @@ const Produtos = db.define(
     estoque: {
       type: DataTypes.INTEGER,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-    },
   },
   {
     tableName: "produtos",
+    timestamps: false,
   }
 );
 

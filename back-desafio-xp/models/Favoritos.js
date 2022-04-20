@@ -6,29 +6,24 @@ const Produtos = require("./Produtos");
 const Favoritos = db.define(
   "Favoritos",
   {
-    usuario_id: {
+    Usuarios_idUsuarios: {
       type: DataTypes.INTEGER,
       references: {
         model: Usuarios,
-        key: "id",
+        key: "idUsuarios",
       },
     },
-    produto_id: {
+    Produtos_idProdutos: {
       type: DataTypes.INTEGER,
       references: {
         model: Produtos,
-        key: "id",
+        key: "idProdutos",
       },
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
     },
   },
   {
     tableName: "favoritos",
+    timestamps: false,
   }
 );
 
