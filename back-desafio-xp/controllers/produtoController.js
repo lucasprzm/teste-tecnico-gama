@@ -1,4 +1,3 @@
-const { where } = require("sequelize/types");
 const { Produtos } = require("../models");
 
 const produtoController = {
@@ -16,23 +15,27 @@ const produtoController = {
     res.status(201).json(novoProduto);
   },
   atualizarProduto: async (req, res) => {
-    const { id } = req.params;
-    const { nome, preco, estoque } = req.body;
-    if (!id) return res.status(400).json("ID não enviado!");
+    try {
+      const { idProdutos } = req.params;
+      const { nome, preco, estoque } = req.body;
+      if (!idProdutos) return res.status(400).json("ID não enviado!");
 
-    const produtoAtualizado = Produtos.update(
-      {
-        nome,
-        preco,
-        estoque,
-      },
-      {
-        where: {
-          id,
+      const produtoAtualizado = await Produtos.update(
+        {
+          nome,
+          preco,
+          estoque,
         },
-      }
-    );
-    res.json("Produto Atualizado!");
+        {
+          where: {
+            idProdutos,
+          },
+        }
+      );
+      res.json("Produto Atualizado!");
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 
