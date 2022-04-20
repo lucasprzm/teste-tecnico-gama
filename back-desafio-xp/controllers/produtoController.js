@@ -37,6 +37,12 @@ const produtoController = {
       console.log(error);
     }
   },
+  deletarProduto: async (req, res) => {
+    const { idProdutos } = req.params;
+    if (!idProdutos) return res.status(400).json("Produto não encontrado ou id não fornecido.");
+    const produtoApagado = await Produtos.destroy({ where: { idProdutos } });
+    res.json(`Produto de id ${idProdutos} apagado!`);
+  },
 };
 
 module.exports = produtoController;
