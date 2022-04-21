@@ -3,16 +3,18 @@ const Favoritos = require("./Favoritos");
 const Produtos = require("./Produtos");
 const Usuarios = require("./Usuarios");
 
-Usuarios.hasOne(CadastroUsuario, {
-  foreignKey: "usuario_id",
+// Usuarios.hasOne(CadastroUsuario, {
+//   foreignKey: "Usuarios_idUsuarios",
+// });
+
+Produtos.belongsToMany(Usuarios, {
+  foreignKey: "Produtos_idProdutos",
+  through: Favoritos,
 });
 
-Usuarios.hasMany(Favoritos, {
-  foreignKey: "usuario_id",
-});
-
-Produtos.hasMany(Favoritos, {
-  foreignKey: "produto_id",
+Usuarios.belongsToMany(Produtos, {
+  foreignKey: "Usuarios_idUsuarios",
+  through: Favoritos,
 });
 
 module.exports = {
