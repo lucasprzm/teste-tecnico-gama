@@ -1,8 +1,10 @@
-const { Usuarios } = require("../models");
+const { Usuarios, Produtos } = require("../models");
 
 const usuariosController = {
   listarUsuarios: async (req, res) => {
-    const listaDeUsuarios = await Usuarios.findAll();
+    const listaDeUsuarios = await Usuarios.findAll({
+      include: [{ model: Produtos, attributes: ["nome", "preco"] }],
+    });
     res.json(listaDeUsuarios);
   },
   cadastrarUsuario: async (req, res) => {
